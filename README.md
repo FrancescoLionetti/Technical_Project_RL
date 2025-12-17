@@ -68,7 +68,7 @@ This starts the node responsible for delivery logic, visual docking via Aruco ma
 ros2 run airport_baggage_system fra2mo_manager_cpp
 ```
  
-## **5. IIWA Task Manager Execution**
+## **6. IIWA Task Manager Execution**
 This activates the robotic arm supervisor, which coordinates the object-picking phases and triggers the transportation missions.
 ```shell
 ros2 run airport_baggage_system iiwa_manager_cpp
