@@ -28,7 +28,40 @@ Il progetto si basa su un'architettura a nodi distribuiti:
 
 Assicurati di trovarti nella root del tuo workspace ROS 2:
 
-```bash
-git clone https://github.com/FrancescoLionetti/Technical_Project_RL.git
+1.  **Clone the Repository: Navigate to your workspace source directory and clone the repository.**
+    ```shell
+    cd /ros2_ws
+    git clone https:
+    '''
+
+2.  **Launch the world**
+   ```shell
+    ros2 launch airport_baggage_system iiwa_launch.py
+    '''
+    
+3.  **In another terminal run the color detection node**
+    ```shell
+     ros2 run airport_baggage_system color_detector.py
+    ```
+    
+4.  **In another terminal launch the MoveArm controller**
+   ```shell
+     ros2 launch ros2_kdl_package kdl_action.launch.py
+    ```
+
+5.  **In another terminal launch the Nav2 controller for Fra2mo**
+   ```shell
+     ros2 launch ros2_fra2mo fra2mo_navigation.launch.py
+    ```
+
+6.  **In another terminal run Fra2mo manager node**
+   ```shell
+     ros2 launch ros2_fra2mo fra2mo_manager_cpp
+    ```
+
+7.  **In another terminal run IIWA manager node**
+   ```shell
+     ros2 launch ros2_fra2mo iiwa_manager_cpp
+    ```
 
 
