@@ -1,0 +1,9 @@
+# Goal: La posizione target (x, y, z)
+geometry_msgs/Point target_position
+---
+# Result: Un booleano che indica il successo
+bool success
+---
+# Feedback: L'errore di posizione corrente
+float64 position_error_norm
+

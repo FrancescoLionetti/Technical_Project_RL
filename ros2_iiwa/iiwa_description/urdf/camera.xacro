@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="base_camera" params="prefix namespace">
+
+      <joint name="${prefix}camera_joint" type="fixed">
+	<parent link="${prefix}link_0"/>
+	<child link="${prefix}camera_link"/>
+	<axis xyz="0 1 0"/>
+	<origin xyz="-0.135 0 0.155" rpy="0 0.8 3.14"/>
+      </joint>
+
+      <link name="${prefix}camera_link">
+        <visual>
+      	  <geometry>
+        	<box size="0.005 0.005 0.005"/>
+      	  </geometry>
+      		<material name="black"/>
+   	</visual>
+    	<collision>
+      	  <geometry>
+        	<box size="0.005 0.005 0.005"/>
+          </geometry>
+        </collision>
+      <inertial>
+      		<mass value="0.1"/>
+      		<inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001"/>
+      </inertial>
+     </link>
+      
+       <gazebo reference="${prefix}camera_link">
+          <sensor name="${prefix}camera" type="camera">
+             <camera>
+              <horizontal_fov>1.047</horizontal_fov>
+              <image>
+                  <width>320</width>
+                  <height>240</height>
+              </image>
+              <clip>
+                  <near>0.1</near>
+                  <far>100</far>
+              </clip>
+              </camera>
+              <plugin filename="gz-sim-sensors-system" name="gz::sim::systems::Sensors">
+                <render_engine>ogre2</render_engine>
+              </plugin>
+              <always_on>1</always_on>
+              <update_rate>30</update_rate>
+              <visualize>true</visualize>
+              <topic>${namespace}camera</topic>
+          </sensor>
+      </gazebo>
+  </xacro:macro>
+
+</robot>

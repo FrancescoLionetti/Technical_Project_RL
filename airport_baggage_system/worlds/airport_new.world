@@ -1,0 +1,322 @@
+<?xml version='1.0' encoding='utf8'?>
+<sdf version='1.7'>
+  <world name='airport_baggage_world'>
+  
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Sun</uri>
+    </include>
+
+    <model name="Ground_Plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry><plane><normal>0 0 1</normal><size>50 50</size></plane></geometry>
+          <surface><friction><ode><mu>100</mu><mu2>50</mu2></ode></friction></surface>
+        </collision>
+        <visual name="visual">
+          <geometry><plane><normal>0 0 1</normal><size>50 50</size></plane></geometry>
+          <material>
+            <ambient>0.4 0.4 0.4 1</ambient>
+            <diffuse>0.6 0.6 0.6 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>	 
+
+    
+
+    <model name='room_walls'>
+      <pose>0 0 0 0 0 0</pose>
+      <static>true</static>
+      <link name='structure'>
+        
+        <collision name='wall_north_col'>
+          <pose>0 10 2 0 0 0</pose> <geometry><box><size>20.4 0.2 4</size></box></geometry>
+        </collision>
+        <visual name='wall_north_vis'>
+          <pose>0 10 2 0 0 0</pose>
+          <geometry><box><size>20.4 0.2 4</size></box></geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+
+        <collision name='wall_south_col'>
+          <pose>0 -10 2 0 0 0</pose>
+          <geometry><box><size>20.4 0.2 4</size></box></geometry>
+        </collision>
+        <visual name='wall_south_vis'>
+          <pose>0 -10 2 0 0 0</pose>
+          <geometry><box><size>20.4 0.2 4</size></box></geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+
+        <collision name='wall_east_col'>
+          <pose>10 0 2 0 0 0</pose>
+          <geometry><box><size>0.2 20 4</size></box></geometry>
+        </collision>
+        <visual name='wall_east_vis'>
+          <pose>10 0 2 0 0 0</pose>
+          <geometry><box><size>0.2 20 4</size></box></geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+
+        <collision name='wall_west_south_col'>
+          <pose>-10 -5.5 2 0 0 0</pose>
+          <geometry><box><size>0.2 9 4</size></box></geometry>
+        </collision>
+        <visual name='wall_west_south_vis'>
+          <pose>-10 -5.5 2 0 0 0</pose>
+          <geometry><box><size>0.2 9 4</size></box></geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+        
+        <collision name='wall_west_north_col'>
+          <pose>-10 5.5 2 0 0 0</pose>
+          <geometry><box><size>0.2 9 4</size></box></geometry>
+        </collision>
+        <visual name='wall_west_north_vis'>
+          <pose>-10 5.5 2 0 0 0</pose>
+          <geometry><box><size>0.2 9 4</size></box></geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+
+        <collision name='wall_west_lintel_col'>
+          <pose>-10 0 3.5 0 0 0</pose> <geometry><box><size>0.2 2 1</size></box></geometry>
+        </collision>
+        <visual name='wall_west_lintel_vis'>
+          <pose>-10 0 3.5 0 0 0</pose>
+          <geometry><box><size>0.2 2 1</size></box></geometry>
+          <material>
+            <ambient>0.5 0.5 0.5 1</ambient>
+            <diffuse>0.5 0.5 0.5 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+          </material>
+        </visual>
+
+      </link>
+    </model>
+    
+    <model name="Kuka_Workstation">
+      <pose>-8.95 4.22 0.25 0 0 0</pose>
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <cylinder>
+              <radius>0.3</radius> <length>0.5</length>
+            </cylinder>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <cylinder>
+              <radius>0.3</radius> <length>0.5</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <ambient>0.9 0.5 0.0 1</ambient>
+            <diffuse>0.9 0.5 0.0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="Red_Cube">
+      <pose>-9.18 4.80 0.34 0 0 0</pose>
+      <static>false</static> <link name="link_1">
+        <inertial>
+          <mass>0.1</mass> <inertia>
+            <ixx>0.0001</ixx> <ixy>0</ixy> <ixz>0</ixz>
+            <iyy>0.0001</iyy> <iyz>0</iyz>
+            <izz>0.0001</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry><box><size>0.05 0.05 0.05</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.05 0.05 0.05</size></box></geometry>
+          <material>
+            <ambient>1 0 0 1</ambient> <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="Green_Cube">
+      <pose>-8.82 4.80 0.34 0 0 0</pose>
+      <static>false</static>
+      <link name="link_2">
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>0.0001</ixx> <ixy>0</ixy> <ixz>0</ixz>
+            <iyy>0.0001</iyy> <iyz>0</iyz>
+            <izz>0.0001</izz>
+          </inertia>
+        </inertial>
+        <collision name="collision">
+          <geometry><box><size>0.05 0.05 0.05</size></box></geometry>
+        </collision>
+        <visual name="visual">
+          <geometry><box><size>0.05 0.05 0.05</size></box></geometry>
+          <material>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="Red_Area">
+      <pose>8.81 -4.01 0.01 0 0 -1.57</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box><size>1 2 0.01</size></box>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    <model name="Green_Area">
+      <pose>8.81 4.01 0.01 0 0 -1.57</pose>
+      <static>true</static>
+      <link name="link">
+        <visual name="visual">
+          <geometry>
+            <box><size>1 2 0.01</size></box>
+          </geometry>
+          <material>
+            <ambient>0 1 0 1</ambient>
+            <diffuse>0 1 0 1</diffuse>
+          </material>
+        </visual>
+      </link>
+    </model>
+    
+    
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NurseDesk</uri>
+      <name>Desk_Checkin_1</name>
+      <pose>7.46 -6.93 0 0 0 -2.24</pose>
+    </include>
+    
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/NurseDesk</uri>
+      <name>Desk_Checkin_2</name>
+      <pose>7.46 6.93 0 0 0 -1.15</pose>
+    </include>
+    
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlack</uri>
+      <name>Chair_1</name>
+      <pose>8.00 -7.76 0 0 0 -2.24</pose>
+    </include>
+    
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/OfficeChairBlack</uri>
+      <name>Chair_2</name>
+      <pose>8.00 7.76 0 0 0 -1.15</pose>
+    </include>
+    
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Suitcase1</uri>
+      <name>Suitcase_1</name>
+      <pose>-8.5 7.81 0.15 2.24 -1.55 -2.24</pose>
+    </include>
+    
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Suitcase2</uri>
+      <name>Suitcase_2</name>
+      <pose>-8.68 7.81 0.40 2.24 -1.55 -2.24</pose>
+    </include>
+    
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Table Marble</uri>
+      <name>Table_Marble</name>
+      <pose>-8.85 6.0 0.0 0 0 1.57</pose>
+    </include>
+    
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/AirportBench</uri>
+      <name>bench_1</name>
+      <pose>-6 3 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/AirportBench</uri>
+      <name>bench_2</name>
+      <pose>-6 -3 0 0 0 0</pose>
+    </include>
+    
+     <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Walking person</uri>
+      <name>person_1</name>
+      <pose>-8.06 -4.75 0 0 0 -1.66</pose> 
+    </include>
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/Suitcase1H</uri>
+      <name>baggage_1</name>
+      <pose>-8.14 -4.15 0 0 0 1.57</pose> 
+    </include>
+    
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/VendingMachine</uri>
+      <name>Vending_Machine_1</name>
+      <pose>-9.51 -4.75 0 0 0 0</pose> 
+    </include>
+    
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/DigitalKiosk</uri>
+      <name>Digital_Kiosk_1</name>
+      <pose>0.85 0 0 0 0 0</pose> 
+    </include>
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/DigitalKiosk</uri>
+      <name>Digital_Kiosk_2</name>
+      <pose>0 0.85 0 0 0 1.57</pose> 
+    </include>
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/DigitalKiosk</uri>
+      <name>Digital_Kiosk_3</name>
+      <pose>-1 0. 0 0 0 3.13</pose> 
+    </include>
+    <include>
+      <uri>https://fuel.gazebosim.org/1.0/OpenRobotics/models/DigitalKiosk</uri>
+      <name>Digital_Kiosk_4</name>
+      <pose>0 -0.85 0 0 0 -1.57</pose> 
+    </include>
+    
+    <include>
+	<uri>model://aruco_tag</uri>
+	<name>aruco_tag</name>
+	<pose>-8.64 4.22 0.14 0.0 -1.57 3.10</pose> 
+    </include> 
+
+
+  </world>
+</sdf>

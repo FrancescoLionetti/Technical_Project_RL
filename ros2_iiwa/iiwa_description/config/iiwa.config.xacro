@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="iiwa">
+
+    <xacro:arg name="use_sim" default="true" />
+    <xacro:arg name="use_fake_hardware" default="false" />
+    <xacro:arg name="prefix" default="" />
+    <xacro:arg name="robot_ip" default="192.170.10.2" />
+    <xacro:arg name="robot_port" default="30200" />
+    <xacro:arg name="initial_positions_file" default="initial_positions.yaml" />
+    <xacro:arg name="command_interface" default="velocity" />
+    <xacro:arg name="base_frame_file" default="base_frame.yaml" />
+    <xacro:arg name="description_package" default="iiwa_description" />
+    <xacro:arg name="runtime_config_package" default="iiwa_description" />
+    <xacro:arg name="controllers_file" default="iiwa_controllers.yaml" />
+    <xacro:arg name="namespace" default="/" />
+
+    <xacro:property name="description_package" value="$(arg description_package)"/>
+
+    <xacro:include filename="$(find ${description_package})/urdf/iiwa.urdf.xacro" />
+
+    <xacro:include filename="$(find ${description_package})/ros2_control/iiwa.r2c_hardware.xacro" />
+
+    <xacro:include filename="$(find ${description_package})/gazebo/iiwa.gazebo.xacro"/>
+
+    <link name="world"/>
+    <gazebo reference="world">
+        <static>true</static>
+    </gazebo>
+
+    <xacro:property name="base_frame_file" value="$(arg base_frame_file)"/>
+    <xacro:property name="base_frame" value="${xacro.load_yaml(base_frame_file)['base_frame']}"/>
+    
+    <xacro:iiwa parent="world" prefix="$(arg prefix)">
+        <origin xyz="${base_frame['x']} ${base_frame['y']} ${base_frame['z']}"
+            rpy="${base_frame['roll']} ${base_frame['pitch']} ${base_frame['yaw']}" />
+    </xacro:iiwa>
+
+    <xacro:iiwa_r2c_hardware
+        name="iiwaRobot" prefix="$(arg prefix)"
+        robot_ip="$(arg robot_ip)" robot_port="$(arg robot_port)"
+        command_interface="$(arg command_interface)"
+        initial_positions_file="$(arg initial_positions_file)"
+        use_sim="$(arg use_sim)" use_fake_hardware="$(arg use_fake_hardware)"
+    />
+
+    <xacro:iiwa_gazebo
+        runtime_config_package="$(arg runtime_config_package)"
+        controllers_file="$(arg controllers_file)"
+        namespace="$(arg namespace)"
+        prefix="$(arg prefix)"
+    />
+        
+   <gazebo>
+    <plugin filename="ignition-gazebo-detachable-joint-system" 
+            name="ignition::gazebo::systems::DetachableJoint">
+      <parent_link>link_7</parent_link>
+      <child_model>Red_Cube</child_model>
+      <child_link>link_1</child_link> <detach_topic>/iiwa/detach_red</detach_topic>
+      <attach_topic>/iiwa/attach_red</attach_topic>
+    </plugin>
+
+    <plugin filename="ignition-gazebo-detachable-joint-system" 
+            name="ignition::gazebo::systems::DetachableJoint">
+      <parent_link>link_7</parent_link>
+      <child_model>Green_Cube</child_model>
+      <child_link>link_2</child_link> <detach_topic>/iiwa/detach_green</detach_topic>
+      <attach_topic>/iiwa/attach_green</attach_topic>
+    </plugin>
+  </gazebo>
+
+</robot>

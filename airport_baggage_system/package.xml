@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>airport_baggage_system</name>
+  <version>0.0.0</version>
+  <description>Autonomus system for the assignment of baggage in the airport desks</description>
+  <maintainer email="f.lionetti@studenti.unina.it">Francesco Lionetti</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>rclcpp_action</depend>
+
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  
+  <depend>nav2_msgs</depend>
+
+  <depend>ros_gz_interfaces</depend>
+  <depend>ros2_kdl_package</depend>
+
+  <depend>orocos_kdl</depend>
+  <depend>kdl_parser</depend>
+
+  <exec_depend>ros_gz_sim</exec_depend>
+  <exec_depend>ros_gz_bridge</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>launch</exec_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

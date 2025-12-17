@@ -1,0 +1,23 @@
+param_node:
+  ros__parameters:
+    traj_duration: 1.5
+    acc_duration: 0.5
+    total_time: 1.5
+    trajectory_len: 150
+    Kp: 5
+    end_position_vec: [0.4, 0.3, 0.5]
+    lambda: 20.0
+
+action_server_node:
+  ros__parameters:
+    cmd_interface: "velocity"
+    traj_duration: 1.5
+    acc_duration: 0.5
+    total_time: 1.5
+    trajectory_len: 150
+    Kp: 5
+    end_position_vec: [0.4, 0.3, 0.5]
+    lambda: 20.0
+
+    
+
