@@ -29,6 +29,6 @@ Il progetto si basa su un'architettura a nodi distribuiti:
 Assicurati di trovarti nella root del tuo workspace ROS 2:
 
 ```bash
-cd ~/ros2_ws
-colcon build 
-source install/setup.bash
+git clone
+
+
