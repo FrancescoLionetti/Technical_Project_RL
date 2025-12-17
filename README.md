@@ -29,6 +29,6 @@ Il progetto si basa su un'architettura a nodi distribuiti:
 Assicurati di trovarti nella root del tuo workspace ROS 2:
 
 ```bash
-git clone
+git clone https://github.com/FrancescoLionetti/Technical_Project_RL.git
 
 
