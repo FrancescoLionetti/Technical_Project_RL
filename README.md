@@ -8,7 +8,7 @@ Questo progetto implementa un sistema multi-robot composto da un manipolatore **
 
 Il sistema opera secondo la seguente logica collaborativa:
 1.  **Riconoscimento:** Il KUKA IIWA utilizza una telecamera per identificare i pacchi sul tavolo tramite visione artificiale (OpenCV).
-    * 🔴 **Valigia Rosso:** Destinato all'Area Rossa.
+    * 🔴 **Valigia Rossa:** Destinato all'Area Rossa.
     * 🟢 **Valigia Verde:** Destinato all'Area Verde.
 2.  **Manipolazione & Handover:** Il braccio robotico preleva l'oggetto e lo posiziona sul robot mobile.
 3.  **Navigazione Autonoma:** Fra2Mo riceve l'ordine, naviga verso l'area di scarico specifica utilizzando **Nav2**.
