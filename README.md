@@ -29,7 +29,7 @@ To successfully set up and test the project, follow these steps within your ROS 
 1.  **Clone the Repository**
     ```shell
     cd /ros2_ws
-    git clone 
+    git clone https://github.com/FrancescoLionetti/Technical_Project_RL.git
     ```
  
 2.  **Build the Workspace: Return to the workspace root, build the packages, and source the environment.**
