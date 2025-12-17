@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="fra2mo" >
+  <xacro:include filename="$(find ros2_fra2mo)/urdf/fra2mo_base_macro.xacro"/>
+  <xacro:include filename="$(find ros2_fra2mo)/urdf/lidar_gazebo_macro.xacro"/> 
+  <xacro:include filename="$(find ros2_fra2mo)/urdf/camera_macro.xacro" />
+  
+  <xacro:property name="LIDAR" value="True"/>
+  <xacro:property name="CAMERA" value="True"/>
+  
+  <!-- Diff Drive Robot Base -->
+  <xacro:fra2mo_base/>
+
+  <!-- LIDAR Sensor--> 
+  <xacro:if value="${LIDAR}">
+    <xacro:lidar_gazebo_sensor parent="lidar_link"/>
+  </xacro:if>
+
+  <!-- Camera Sensor  -->
+  
+  <xacro:if value="${CAMERA}">
+    <xacro:camera_gazebo_sensor parent="base_link"/>
+  </xacro:if>
+  
+  
+  <!--Deatchable Joints -->
+  
+  <gazebo>
+      <plugin filename="ignition-gazebo-detachable-joint-system" name="ignition::gazebo::systems::DetachableJoint">
+          <parent_link>base_footprint</parent_link>
+          <child_model>Red_Cube</child_model>
+          <child_link>link_1</child_link> <detach_topic>/fra2mo/detach_red</detach_topic>
+          <attach_topic>/fra2mo/attach_red</attach_topic>
+      </plugin>
+
+      <plugin filename="ignition-gazebo-detachable-joint-system" name="ignition::gazebo::systems::DetachableJoint">
+          <parent_link>base_footprint</parent_link>
+          <child_model>Green_Cube</child_model>
+          <child_link>link_2</child_link> <detach_topic>/fra2mo/detach_green</detach_topic>
+          <attach_topic>/fra2mo/attach_green</attach_topic>
+      </plugin>
+  </gazebo>
+
+</robot>
